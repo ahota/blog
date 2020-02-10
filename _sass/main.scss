@@ -1,0 +1,17 @@
+body {
+    color: #ddd;
+    background-color: #333;
+    font-family: monospace;
+    min-width: 40ch;
+    max-width: 80ch;
+    margin: 1em auto;
+}
+
+a:link, a:visited {
+    color: #fff;
+}
+
+a:hover {
+    color: #333;
+    background-color: #ddd;
+}
