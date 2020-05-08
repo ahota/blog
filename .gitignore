@@ -1,0 +1,10 @@
+# ruby/jekyll files
+Gemfile.lock
+_site/
+.jekyll-cache/
+
+# vim files
+.*.swp
+
+# my stuff
+tmp/
