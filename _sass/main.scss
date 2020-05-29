@@ -1,7 +1,8 @@
 body {
     color: #ddd;
     background-color: #333;
-    font-family: monospace;
+    font-family: Hack, monospace;
+    font-size: medium;
     min-width: 40ch;
     max-width: 80ch;
     margin: 1em auto;
@@ -18,4 +19,16 @@ a:hover {
 
 footer {
     margin: 1em 0;
+}
+
+pre, code {
+  font-family: Hack, monospace;
+}
+
+/* only inline code */
+code.highlighter-rouge {
+  background: #404840;
+  color: #d0d8d0;
+  border-radius: 4px;
+  padding: 0 0.5em;
 }
