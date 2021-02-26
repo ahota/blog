@@ -39,3 +39,14 @@ hr {
   border-left: 0;
   border-right: 0;
 }
+
+/* constrain big images to page width */
+img[src*="#fit"] {
+  width: 100%;
+}
+
+/* always center images */
+img {
+  display: block;
+  margin: 0 auto;
+}

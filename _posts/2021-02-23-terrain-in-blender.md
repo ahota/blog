@@ -17,7 +17,7 @@ or jagged. But I realize I'm thinking about this in a different way from what
 these tutorials teach. They are to generate an *image*, not to generate a
 *model*.
 
-![A canyon generated with ANT in Blender](/assets/images/renders/landscapes/canyon_dof.png)
+![A canyon generated with ANT in Blender](/assets/images/renders/landscapes/canyon_dof.png#fit)
 *A canyon generated with ANT in Blender. Textures from TextureHaven. While it
 looks okay at a distance, closeups are not convincing.*
 
