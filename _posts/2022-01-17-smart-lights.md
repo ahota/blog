@@ -14,4 +14,5 @@ didn't work through Google Home. So, to fix it:
 
 Now the lights work through Google Assistant!
 
+![My smart light strip set to green](/assets/images/lightstrip.jpg#fit)
 _"Hey Google, make the office light strip green"_
