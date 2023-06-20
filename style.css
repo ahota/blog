@@ -140,3 +140,18 @@ a:visited {
 .fig-right {
   float: right;
 }
+
+blockquote {
+  font-style: italic;
+}
+blockquote p::before {
+  font-size: 200%;
+  content: '\201C';
+  display: block;
+}
+blockquote p::after {
+  font-size: 200%;
+  content: '\201D';
+  display: block;
+  text-align: right;
+}
