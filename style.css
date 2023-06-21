@@ -9,23 +9,6 @@ body {
   min-height: 100vh;
 }
 
-/*
-.content {
-  background: #e8e8e8;
-  min-height: 100%;
-  max-width: 1024px;
-  padding: 0 1em 0 1em;
-}
-
-.spaceship {
-  width: 100%;
-  height: 1em;
-  display: block;
-  padding: 0;
-  margin: 0;
-}
-*/
-
 header, main, footer {
   width: 75vw;
   max-width: 1024px;
@@ -41,6 +24,21 @@ header, main, footer {
   main figure {
     max-width: 33vw;
   }
+}
+
+header {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+}
+header.page-title {
+}
+header nav {
+  text-align: right;
+}
+header hr {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 main {
