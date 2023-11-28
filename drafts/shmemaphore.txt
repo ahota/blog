@@ -1,0 +1,91 @@
+Semaphores and Shared Memory
+
+Or, Shmemaphores
+
+TL;DR I made an example library for using semaphores to control access to
+shared memory betwen two separate processes. https://github.com/ahota/shmemaphore
+
+I recently had to dive into some interprocess communication (IPC) code for
+work. I had to refresh myself on the different options that are used. It has
+been about 13 or 14 years since I learned about them, and I've never needed to
+use IPC in that time.
+
+In the end, an API based on shared memory was going to be the best solution
+for me. I relearned how semaphores are used to guard access to resources. It's
+surprising to me how hard it is to find good, straightforward explanations for
+these concepts. [Beej's Guide to IPC] is the gold standard here (as well as
+pretty much everything else Beej has written). But even here I found the
+explanation of semaphores a little lackluster. The best resource I found is
+from James Madison University: a completely free textbook online of OS
+fundamentals. https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/index.html
+
+Here goes my own explanation:
+
+A semaphore is a locking mechanism used to control access to a resource. The
+resource can be anything you choose; it's completely separate from the
+semaphore logic.
+
+The two key points about a semaphore are:
+ * it exists _independently_ from the threads and processes that use it
+ * it can allow up to your choice of _n_ concurrent users of the resource
+
+You can think of a semaphore as a file (which is usually how it's
+implemented) that is "owned" by the operating system. That means semaphores
+are completely independent of the threads/processes using them, and can even
+exist after program execution ends. In fact, they will exist until system
+shutdown unless you destroy them yourself!
+
+Using a semaphore was necessary in my case because I'm using two completely
+unrelated processes; one doesn't launch the other and consequently share or
+copy memory space, nor are they threads forked from a parent. Because the OS
+holds the semaphore, I can access them from both processes. Awesome.
+
+In essence, a semaphore is just an integer. The value of the integer dictates
+how many processes can access the resource being guarded. Any time a process
+wants to access the resource, either to read or write, it must "acquire" one
+of the slots. This is called "waiting", which I think is a dumb term. I also
+dislike all the other alternative terms (downing or P).
+
+If the semaphore's value is greater than 0, the process can pass through. The
+semaphore's value is then decremented to show that slot is taken. When the
+process is done accessing the resource, it "releases" the semaphore. This is
+called "posting", a term which I also dislike (along with upping, signaling,
+or V). Posting increments the semaphore's value, showing that a slot is now
+free.
+
+If the semaphore's value is 0, then the resource is being accessed by the max
+number of processes. When a process attempts to decrement the semaphore, it
+will be blocked. The process will wait (this is where the name comes from)
+until another process is finished and increments the semaphore.
+
+That's it! But the real challenge is using them effectively.
+
+Beej's guide, and many tutorials online, use System V semaphores. These are
+rather outdated, and aren't as widely supported as the alternative: POSIX
+semaphores.  You can create named and unnamed (or anonymous) semaphores.
+Unnamed semaphores, however, can only be shared between threads using the same
+memory space (e.g. parent and child), or have to be placed in a shared memory
+segment to access by separate processes. This is annoying, because a shared
+memory segment is what I'm using the semaphore to guard in the first place.
+Unnamed semaphores are also completely unsupported on some OSs (e.g.
+macOS/BSD). So they're just not a good choice. 
+
+Using the POSIX methods to create, use, and destroy semaphores isn't _so_ bad.
+But it does come with the usual tedium of checking error codes every other
+line so commonly found in C. I also found that because semaphore
+implementations are OS-specific, there's no good way to reference a semaphore
+by name without hard-coding the name. For example, destroying a semaphore
+requires the name, but the semaphore itself doesn't know its own name; so you
+have to separately keep track of it.
+That's kind of annoying, so I wrote a thin C++ wrapper class to simplify
+access a little.
+
+I have all the same gripes for shared memory. It's just tedious to use via C.
+But I guess that's the price you pay for stable, time-tested code. Either way
+I threw together another thin C++ wrapper class for it too.
+
+I'm getting a little tired of writing this, even though I do have more to say.
+I'll come back for a part two, hopefully soon. I leave you with my example
+code:
+
+https://github.com/ahota/shmemaphore
