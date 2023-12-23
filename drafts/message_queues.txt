@@ -1,0 +1,62 @@
+Message queues
+
+In the project I created [shmemaphore]
+for, I have decided to _also_
+use message queues. While I used POSIX semaphores and shared memory segments,
+I am not using POSIX message queues. There's a couple reasons for this:
+
+1. I'm developing on macOS, which while being _mostly_
+POSIX compliant, does not implement message queues. The code
+will ultimately run on Linux where those message queues do exist, but...
+
+2. I'm sending messages between multiple machines. POSIX message queues are
+for IPC only, so they only work on a single machine. I'm sure I could
+  architect it to work over sockets, but...
+
+Why bother rolling your own when there are existing libraries to do this?
+(Except for fun/learning, but I'm not doing that here)
+
+I've used [ZeroMQ]
+in the past, so I decided to use it again here. There are other
+alternatives of course, such as [RabbitMQ],
+[ActiveMQ],
+and [Kafka],
+among many others.
+Kafka _feels_
+like the  "correct enterprise solution" (if there is such a thing), but it also
+feels like using an excavator to plant flowers; much like using Boost for
+anything. Kafka is also Java-based, which
+would add JVM dependency to our so far C++-only project. So for now, I'll
+stick with ZMQ and its C++ wrappers.
+
+The [ZMQ Guide]
+is a really good writeup on how to use the library, the API, and how to design
+reliable systems with it. In my project, I'm using messages to distribute
+tasks among multiple workers; that is, I'm creating a load balancer. And
+wouldn't you know it, the guide has a load balancer example.
+
+The guide is written so that all the concepts build on top of each other, so
+there's a few already in play by the time you get to the load balancer. What I
+ended up building is a demo application that implements the basic load
+balancer described in Section 3 of the guide. The code is [here]
+
+It additionally implements two of the reliability mechanisms for the demo
+clients, which retry sending tasks if the workers are busy. This is called the
+"Lazy Pirate" pattern. It's a "pirate" because it's a "reliable request-reply"
+pattern, or RRR for short. It's "lazy" because it's most basic error handling
+technnique, which is just to give up and move on instead of waiting
+indefinitely.
+
+Having multiple workers available to hopefully spread load and
+serve all client promotes this to the "Simple Pirate". Still, it's possible
+for clients to have their requests go unanswered for a long time.  For demo
+purposes, I have them retry 5 times before giving up, but in my final
+application I will need something more robust and not so simple or lazy.
+Having a client give up should be the last resort.
+
+The next step is to upgrade to the "Paranoid Pirate" pattern, which adds
+heartbeating between the workers and the broker. This will allow for worker
+crash recovery as well. It also prevents the broker from accidentally sending
+messages to a crashed worker. The workers in our real application have been
+very reliable so far, but you can never be too safe. In the case of a crash, I
+don't want to be rushing to fix things at 3 am.
