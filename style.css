@@ -59,6 +59,10 @@ a:visited {
   color: #4c2c92;
 }
 
+p {
+  margin-bottom: 2em;
+}
+
 .page-title {
   padding: 0;
   margin: 0;
