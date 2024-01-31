@@ -1,6 +1,14 @@
+:root {
+  --color-darkest:#042940;
+  --color-dark:#005c53;
+  --color-medium:#9fc131;
+  --color-light:#DBF227;
+  --color-lightest:#d6d58e;
+}
+
 body {
-  background: #283618;
-  color: #283618;
+  background: var(--color-darkest);
+  color: var(--color-darkest);
   font-family: helvetica, arial, sans-serif;
   font-size: x-large;
   margin: 5vh 0;
@@ -56,23 +64,23 @@ main {
 
 hr {
   width: 90%;
-  border-top-color: #283618;
-  border-bottom-color: #606c38;
+  border-top-color: var(--color-darkest);
+  border-bottom-color: var(--color-dark);
 }
 
 a:link, a:focus, a:active {
   text-decoration: underline;
-  color: #dda15e;
+  color: var(--color-medium);
 }
 
 a:visited {
   text-decoration: underline;
-  color: #bc6c25;
+  color: var(--color-dark);
 }
 
 a:hover {
   text-decoration: underline;
-  color: #606c38;
+  color: var(--color-light);
 }
 
 p {
@@ -92,11 +100,11 @@ footer hr {
 .page-title a:focus, 
 .page-title a:active {
   text-decoration: none;
-  color: #bc6c25;
+  color: var(--color-dark);
 }
 .page-title a:hover {
   text-decoration: underline;
-  color: #dda15e;
+  color: var(--color-medium);
 }
 
 .table-o-contents ul {
@@ -108,11 +116,11 @@ footer hr {
 .table-o-contents a:focus,
 .table-o-contents a:active {
   text-decoration: none;
-  color: #bc6c25;
+  color: var(--color-dark);
 }
 .table-o-contents a:hover {
   text-decoration: underline;
-  color: #dda15e;
+  color: var(--color-medium);
 }
 
 .blog-list {
@@ -122,11 +130,11 @@ footer hr {
 .blog-list a:focus,
 .blog-list a:active {
   text-decoration: none;
-  color: #bc6c25;
+  color: var(--color-dark);
 }
 .blog-list a:hover {
   text-decoration: underline;
-  color: #dda15e;
+  color: var(--color-medium);
 }
 
 .project-list {
@@ -137,11 +145,11 @@ footer hr {
 .project-list a:focus,
 .project-list a:active {
   text-decoration: none;
-  color: #bc6c25;
+  color: var(--color-dark);
 }
 .project-list a:hover {
   text-decoration: underline;
-  color: #dda15e;
+  color: var(--color-medium);
 }
 
 .fig-256 {
