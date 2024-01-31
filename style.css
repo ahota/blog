@@ -1,13 +1,13 @@
 :root {
-  --color-darkest:#042940;
-  --color-dark:#005c53;
-  --color-medium:#9fc131;
-  --color-light:#DBF227;
-  --color-lightest:#d6d58e;
+  --color-darkest:#0d0d0d;
+  --color-dark:#3a4039;
+  --color-medium:#535951;
+  --color-light:#8c8979;
+  --color-lightest:#bfbdb0;
 }
 
 body {
-  background: var(--color-darkest);
+  background: var(--color-dark);
   color: var(--color-darkest);
   font-family: helvetica, arial, sans-serif;
   font-size: x-large;
@@ -27,11 +27,12 @@ header, main, footer {
   background: #fefae0;
   margin: 0 auto;
   padding: 1em 3em;
-  filter: drop-shadow(2vw 2vw 0 #606c38);
+  filter: drop-shadow(2vw 2vw 0 var(--color-light));
 }
 
 footer {
   border-radius: 0 0 2vh 2vh;
+  margin-bottom: 5vh;
 }
 
 @media (max-width: 1000px) {
