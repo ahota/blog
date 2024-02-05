@@ -16,3 +16,97 @@ manual override doesnt work either because it needs faceid
 airpilot doesnt make a decision and drives straight into median 
 crash physically and software
 time to go to the genius garage to get a new apple car
+
+you pat yourself on the back for getting the optional charging cable for your
+apple car.
+even though it cost as much as your down payment, it was worth it because you had forgotten to charge it yesterday and now the battery is low.
+you unspool your lightning max cable from its reel on the wall and plug
+it into the underside of your apple car.
+thankfully apple made the thinnest and lightest car so one person, like yourself, can rock apple car back and forth until it flips over to reveal the single charge port under the chassis.
+it makes sense, you think, that apple didn't put the charging port in a "typical" spot; what if you accidentally drove away with the cable connected?
+
+what a disaster that would be, you chuckle to yourself.
+
+you wait for half an hour for apple car to reach 50% charge.
+you're late for dinner with your girlfriend; she wants to introduce you to her parents.
+now you'll be fashionably late, which should give you an air of sophistication when you walk in.
+while waiting, you wipe dirt off the brushed aluminum body, admiring its sheen.
+
+it's really a work of art, you think.
+
+you pull the lightning max cable out and respool it.
+you notice the cable is starting to bend and fray at the end where it meets the connector.
+apple probably does that so you don't use the cable for too long and wear it out, you think.
+you begin rocking your apple car back and forth to flip it back over.
+you hear a loud, sharp, *clink* as you give it a final push.
+your apple car lands on its wheels and you see the windshield had rolled over a rock and is now cracked, lines snaking all across the glass.
+
+damn it, you think to yourself, i should've bought a case.
+
+you stare at your apple car's window as faceid scans you.
+the door pops open and you hop inside.
+you settle into the single, cushy white seat in the hyper-minimal interior.
+you tap the apple dashpad to wake it up; it scans your face and unlocks.
+you open apple maps and type in your girlfriend's parents' address.
+you tap the navigation start button and apple airpilot takes over.
+apple car backs out of your driveway and, unbeknowst to you, begins taking you to a random incorrect location.
+
+as you pull out of your neighborhood, you swipe up to leave apple maps and bring up the news app on your apple dashpad.
+you scroll through headlines as you silently zip down the main road outside your neighborhood.
+
+lucid unveils its next ev, the lucid earth, following the success of its previous models, the air, fire, and water.
+lucid claims the earth will travel over 700 miles on a single charge, with a 0-60 time of 0.98 seconds.
+
+ha, you think, they're always trying to compete on range. 
+the apple car has a 200-mile range on a full charge.
+but they're premium miles, you think.
+plus, they show up as green boxes on the airpilot head-up display.
+apple cars show up as blue cars, and i can airdrop memes to them.
+
+that's what's important, you think, the experience.
+
+as you turn onto a service road, you begin to feel a bit too warm.
+the automatic climate control system set the temperature to the ideal for the current season and weather.
+though admittedly, your outfit of a black turtleneck and jeans is an odd choice for summer.
+you decide to turn the temperature down.
+you switch apps again, now to climate control.
+apple hasn't rolled out the split view update for dashpad yet, so you have not seen the map since you left, and therefore have not noticed you are going the wrong way.
+you press the auto airtemp button to disable automatic climate control, then press and drag the temperature slider down.
+the slider stops moving as you drag.
+you try pressing and dragging again, but nothing happens.
+
+maybe this is a new feature, you think, to prevent rapid temperature changes.
+
+suddenly, a spinning beach ball appears on the dashpad.
+it's one of the few remnants of macos in apple's consolidated os ecosystem.
+you keep tapping the screen, but nothing happens.
+it's frozen.
+
+you hear a beep.
+the airpilot head-up display notifies you that airpilot wants to take a toll road.
+you have password protection enabled for purchases, so it needs faceid to enter the onramp.
+you stare at dashpad, but nothing happens.
+it's still frozen.
+
+the service road is under construction ahead.
+airpilot wants to avoid it, but its only move is to enter the toll road.
+confused, airpilot requests manual override.
+you press the center of the touchwheel.
+the haptic feedback tells you the steering system still works.
+but manual override requires faceid, since you set this to be a single-driver car.
+you stare at the dashpad, but nothing happens.
+it's still frozen.
+
+as you hurtle towards the toll road onramp, airpilot gives up in its confusion.
+apple car slowly drifts, now pointing directly at the concrete barrier between the onramp and service road.
+the emergency braking sensors mercifully still work, and slam on the brakes.
+the concrete barrier grows closer and closer as your tires screech.
+it's going to be a close one.
+apple car decelerates, you squeeze your eyes shut, and the car comes to a stop with just enough momentum for the nose of the car to just barely tap the concrete barrier.
+
+for a moment, you take in the quiet, opening your eyes.
+then you hear a loud, sharp *clink*.
+you step out of the car.
+the panoramic sunroof and rear windscreen have cracked, lines snaking all across the roof of the car.
+
+time to go to the genius garage.
