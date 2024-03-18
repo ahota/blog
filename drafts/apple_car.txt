@@ -17,6 +17,8 @@ airpilot doesnt make a decision and drives straight into median
 crash physically and software
 time to go to the genius garage to get a new apple car
 
+the apple car is dead: a post-mortem jocularity, if you will
+
 you pat yourself on the back for getting the optional charging cable for your
 apple car.
 even though it cost as much as your down payment, it was worth it because you had forgotten to charge it yesterday and now the battery is low.
