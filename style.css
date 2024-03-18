@@ -153,26 +153,33 @@ footer hr {
   color: var(--color-medium);
 }
 
-.fig-256 {
-  width: 256px;
+figure {
   display: flex;
   flex-flow: column;
   border: thin #cccccc solid;
   padding: 0.5em;
 }
-.fig-256 > img {
+figure > img {
   width: 100%;
 }
-.fig-256 figcaption {
+figcaption {
   font-style: italic;
   font-size: medium;
 }
 
+.fig-wide {
+  max-width: 80%;
+  margin: auto;
+}
+.fig-256 {
+  width: 256px;
+}
 .fig-right {
   float: right;
 }
 
 blockquote {
+  font-family: "Palatino", serif;
   font-style: italic;
 }
 blockquote p::before {
