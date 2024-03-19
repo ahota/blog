@@ -193,3 +193,9 @@ blockquote p::after {
   display: block;
   text-align: right;
 }
+
+pre { 
+  width: 80ch;
+  max-width: 100%;
+  overflow: auto;
+}
