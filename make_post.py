@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 import bs4
 import markdown
 import os
@@ -10,14 +12,20 @@ def make_post(filename):
     with open(filename, 'r') as f:
         md = f.read()
 
-    html = markdown.markdown(md)
+    html = markdown.markdown(md, extensions=['fenced_code', 'codehilite'])
 
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('post.html')
     rendered = template.render(post=html)
 
     soup = BeautifulSoup(rendered, 'html.parser')
-    soup.main.h2.string.wrap(soup.new_tag('code'))
+    try:
+        soup.main.h2.string.wrap(soup.new_tag('code'))
+    except:
+        print('Could not find h2? Dumping the file')
+        with open('make_post_error.html', 'w') as f:
+            f.write(soup.prettify(formatter='html5'))
+        return
     soup.main.h2.code.string.insert_before('~$ ')
 
     formatter = bs4.formatter.HTMLFormatter(indent=2)
