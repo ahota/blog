@@ -8,6 +8,13 @@ from argparse import ArgumentParser
 from bs4 import BeautifulSoup
 from jinja2 import Environment, FileSystemLoader
 
+from bs4.builder import HTMLTreeBuilder
+from bs4.builder._htmlparser import HTMLParserTreeBuilder
+
+# prevent prettify() from adding newlines to <code> tags
+class CodeAwareTreeBuilder(HTMLParserTreeBuilder):
+    DEFAULT_PRESERVE_WHITESPACE_TAGS = set(['pre', 'textarea', 'code'])
+
 def make_post(filename):
     with open(filename, 'r') as f:
         md = f.read()
@@ -18,7 +25,7 @@ def make_post(filename):
     template = env.get_template('post.html')
     rendered = template.render(post=html)
 
-    soup = BeautifulSoup(rendered, 'html.parser')
+    soup = BeautifulSoup(rendered, features='html.parser', builder=CodeAwareTreeBuilder())
     try:
         soup.main.h2.string.wrap(soup.new_tag('code'))
     except:
@@ -29,7 +36,7 @@ def make_post(filename):
     soup.main.h2.code.string.insert_before('~$ ')
 
     formatter = bs4.formatter.HTMLFormatter(indent=2)
-    post = soup.prettify(formatter='html5')
+    post = soup.prettify(formatter=formatter)
 
     dirname, ext = os.path.splitext(os.path.basename(filename))
     dirpath = os.path.join('blog', dirname)
