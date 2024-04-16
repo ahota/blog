@@ -36,7 +36,8 @@ def make_post(filename):
     soup.main.h2.code.string.insert_before('~$ ')
 
     formatter = bs4.formatter.HTMLFormatter(indent=2)
-    post = soup.prettify(formatter=formatter)
+    # bs4 breaks angle brackets inside code
+    post = soup.decode() #soup.prettify(formatter=formatter)
 
     dirname, ext = os.path.splitext(os.path.basename(filename))
     dirpath = os.path.join('blog', dirname)
