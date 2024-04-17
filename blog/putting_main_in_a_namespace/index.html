@@ -1,45 +1,91 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<title>alok</title>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="just some stuff i decided to write" name="description"/>
-<link href="favicon.png" rel="icon"/>
-<link href="/style.css" rel="stylesheet" type="text/css"/>
-<link href="/codehilite.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-<header>
-<h1 class="page-title"><a href="/">alok</a></h1>
-<nav class="table-o-contents">
-<ul>
-<li><a href="/blog">blog</a></li>
-<li><a href="/about">about me</a></li>
-<li><a href="/projects">projects</a></li>
-<li><a href="/about/contact.html">contact</a></li>
-</ul>
-</nav>
-<hr/>
-</header>
-<main>
-<!-- //// TITLE AND MAIN CONTENT ////////////////////////////////////// -->
-<!-- <h2><code>~$ page title</code></h2> -->
-<h2><code>~$ putting main in a namespace</code></h2>
-<p>Normally, I would simply place my <code>main()</code> in a file called, for example,
-<code>main.cpp</code> or <code>&lt;project_name&gt;.cpp</code>, and that would serve as the "root" of
+  <head>
+    <meta charset="utf-8">
+    <title>
+      alok
+    </title>
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="just some stuff i decided to write" name="description">
+    <link href="favicon.png" rel="icon">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link href="/codehilite.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header>
+      <h1 class="page-title">
+        <a href="/">
+          alok
+        </a>
+      </h1>
+      <nav class="table-o-contents">
+        <ul>
+          <li>
+            <a href="/blog">
+              blog
+            </a>
+          </li>
+          <li>
+            <a href="/about">
+              about me
+            </a>
+          </li>
+          <li>
+            <a href="/projects">
+              projects
+            </a>
+          </li>
+          <li>
+            <a href="/about/contact.html">
+              contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <hr>
+    </header>
+    <main>
+      <!-- //// TITLE AND MAIN CONTENT ////////////////////////////////////// -->
+      <!-- <h2><code>~$ page title</code></h2> -->
+      <h2>
+        <code>~$ putting main in a namespace</code>
+      </h2>
+      <p>
+        Normally, I would simply place my
+        <code>main()</code>
+        in a file called, for example,
+        <code>main.cpp</code>
+        or
+        <code>&lt;project_name&gt;.cpp</code>
+        , and that would serve as the "root" of
 the project. Within this file, I would include as many headers as are
 necessary to get the job done. This is generally what I see in other code
-as well, whether <code>main()</code> is a huge function that does everything, or a
-simple two-line jumping point for a GUI application.</p>
-<p>But I recently found that this doesn't need to be the case. <code>main()</code> can be
-in a namespace. It can be somewhere random in your code. It just has to <em>be
-somewhere</em> in your code. So why not hide it in a bird's nest of namespaces?</p>
-<p>Well we can't do this for free.</p>
-<p>Suppose we have a simple hello world application, but we hide <code>main()</code>
-inside a namespace.</p>
-<div class="codehilite"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">foo</span>
+as well, whether
+        <code>main()</code>
+        is a huge function that does everything, or a
+simple two-line jumping point for a GUI application.
+      </p>
+      <p>
+        But I recently found that this doesn't need to be the case.
+        <code>main()</code>
+        can be
+in a namespace. It can be somewhere random in your code. It just has to
+        <em>
+          be
+somewhere
+        </em>
+        in your code. So why not hide it in a bird's nest of namespaces?
+      </p>
+      <p>
+        Well we can't do this for free.
+      </p>
+      <p>
+        Suppose we have a simple hello world application, but we hide
+        <code>main()</code>
+        inside a namespace.
+      </p>
+      <div class="codehilite">
+        <pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">foo</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -47,18 +93,44 @@ inside a namespace.</p>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>We can compile this successfully. On Linux, I can do <code>g++ -c test.cpp</code> and
-I will get a valid <code>test.o</code> file output. However, this file cannot be
-linked into an executable. If you try to run <code>g++ test.o -o test</code>, you will
-get an error to the effect of <code>undefined reference to 'main'</code>.</p>
-<p>This happens because C++ compilers mangle the names of symbols when
+</code></pre>
+      </div>
+      <p>
+        We can compile this successfully. On Linux, I can do
+        <code>g++ -c test.cpp</code>
+        and
+I will get a valid
+        <code>test.o</code>
+        file output. However, this file cannot be
+linked into an executable. If you try to run
+        <code>g++ test.o -o test</code>
+        , you will
+get an error to the effect of
+        <code>undefined reference to 'main'</code>
+        .
+      </p>
+      <p>
+        This happens because C++ compilers mangle the names of symbols when
 compiling the source code. This allows functions to have the same name in
 source within different namespaces and scopes without resulting in a symbol
-collision<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<p>We can check that this is happening on Linux with the <code>nm</code> utility to look
-at the symbols. Using the above code, running <code>nm test.o</code> results in:</p>
-<div class="codehilite"><pre><span></span><code><span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__cxa_atexit</span>
+collision
+        <sup id="fnref:1">
+          <a class="footnote-ref" href="#fn:1">
+            1
+          </a>
+        </sup>
+        .
+      </p>
+      <p>
+        We can check that this is happening on Linux with the
+        <code>nm</code>
+        utility to look
+at the symbols. Using the above code, running
+        <code>nm test.o</code>
+        results in:
+      </p>
+      <div class="codehilite">
+        <pre><span></span><code><span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__cxa_atexit</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__dso_handle</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">_GLOBAL_OFFSET_TABLE_</span>
 <span class="mi">0000000000000087</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="n">_GLOBAL__sub_I__ZN3foo4mainEiPPc</span>
@@ -72,17 +144,38 @@ at the symbols. Using the above code, running <code>nm test.o</code> results in:
 <span class="mi">0000000000000000</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">_ZStL19piecewise_construct</span>
 <span class="mi">0000000000000000</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">_ZStL8__ioinit</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc</span>
-</code></pre></div>
-<p>As you can see, the names are quite mangled, but you can still make out in
-the middle our <code>main</code> function, which compiled to the symbol
-<code>_ZN3foo4mainEiPPc</code>.  Note that it contains the <code>foo</code> namespace as part of
-the name<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
-<p>When we try to link our compiled symbols to an executable, the linker will
-look for a symbol called <code>main</code>. Just <code>main</code>. And it has to actually be
+</code></pre>
+      </div>
+      <p>
+        As you can see, the names are quite mangled, but you can still make out in
+the middle our
+        <code>main</code>
+        function, which compiled to the symbol
+        <code>_ZN3foo4mainEiPPc</code>
+        .  Note that it contains the
+        <code>foo</code>
+        namespace as part of
+the name
+        <sup id="fnref:2">
+          <a class="footnote-ref" href="#fn:2">
+            2
+          </a>
+        </sup>
+        .
+      </p>
+      <p>
+        When we try to link our compiled symbols to an executable, the linker will
+look for a symbol called
+        <code>main</code>
+        . Just
+        <code>main</code>
+        . And it has to actually be
 called that; it can't just have the same function prototype. For example,
 we can foolishly try to trick the compiler by creating a new function
-outside of our namespace with the correct prototype:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">foo</span>
+outside of our namespace with the correct prototype:
+      </p>
+      <div class="codehilite">
+        <pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">foo</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -96,10 +189,14 @@ outside of our namespace with the correct prototype:</p>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Neigh, world!"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>This will compile, but it won't link. If we look at the symbols, we can
-see:</p>
-<div class="codehilite"><pre><span></span><code><span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__cxa_atexit</span>
+</code></pre>
+      </div>
+      <p>
+        This will compile, but it won't link. If we look at the symbols, we can
+see:
+      </p>
+      <div class="codehilite">
+        <pre><span></span><code><span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__cxa_atexit</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__dso_handle</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">_GLOBAL_OFFSET_TABLE_</span>
 <span class="mi">0000000000000099</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="n">_GLOBAL__sub_I__ZN3foo4mainEiPPc</span>
@@ -114,14 +211,34 @@ see:</p>
 <span class="mi">0000000000000000</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">_ZStL19piecewise_construct</span>
 <span class="mi">0000000000000000</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">_ZStL8__ioinit</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc</span>
-</code></pre></div>
-<p>Well, <code>_Z4maneiPPc</code> is arguably <em>less</em> mangled than our <code>foo::main()</code>
-function's symbol, but it's not what <code>ld</code> will be looking for.</p>
-<p>But hold on a minute. If we made a globally scoped function with the
+</code></pre>
+      </div>
+      <p>
+        Well,
+        <code>_Z4maneiPPc</code>
+        is arguably
+        <em>
+          less
+        </em>
+        mangled than our
+        <code>foo::main()</code>
+        function's symbol, but it's not what
+        <code>ld</code>
+        will be looking for.
+      </p>
+      <p>
+        But hold on a minute. If we made a globally scoped function with the
 correct prototype and it was still mangled, how would it ever link? Because
-<code>main</code> is treated specially. If we rename <code>mane</code> to <code>main</code> and inspect the
-symbols, we can see we get the symbol we want:</p>
-<div class="codehilite"><pre><span></span><code><span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__cxa_atexit</span>
+        <code>main</code>
+        is treated specially. If we rename
+        <code>mane</code>
+        to
+        <code>main</code>
+        and inspect the
+symbols, we can see we get the symbol we want:
+      </p>
+      <div class="codehilite">
+        <pre><span></span><code><span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__cxa_atexit</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__dso_handle</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">_GLOBAL_OFFSET_TABLE_</span>
 <span class="mi">0000000000000099</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="n">_GLOBAL__sub_I__ZN3foo4mainEiPPc</span>
@@ -136,13 +253,25 @@ symbols, we can see we get the symbol we want:</p>
 <span class="mi">0000000000000000</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">_ZStL19piecewise_construct</span>
 <span class="mi">0000000000000000</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">_ZStL8__ioinit</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc</span>
-</code></pre></div>
-<p>There's our <code>main</code> symbol. This will link and run as expected. So how do we
-get our <code>foo::main</code> to behave? We can use <code>extern</code> to accomplish this. If
-we prepend the function with <code>extern "C"</code>, we tell the compiler to avoid
+</code></pre>
+      </div>
+      <p>
+        There's our
+        <code>main</code>
+        symbol. This will link and run as expected. So how do we
+get our
+        <code>foo::main</code>
+        to behave? We can use
+        <code>extern</code>
+        to accomplish this. If
+we prepend the function with
+        <code>extern "C"</code>
+        , we tell the compiler to avoid
 mangling the name of the symbol generated from this function. So the
-following code:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">foo</span>
+following code:
+      </p>
+      <div class="codehilite">
+        <pre><span></span><code><span class="k">namespace</span><span class="w"> </span><span class="nn">foo</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="s">"C"</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -150,9 +279,13 @@ following code:</p>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>generates the following symbols:</p>
-<div class="codehilite"><pre><span></span><code><span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__cxa_atexit</span>
+</code></pre>
+      </div>
+      <p>
+        generates the following symbols:
+      </p>
+      <div class="codehilite">
+        <pre><span></span><code><span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__cxa_atexit</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">__dso_handle</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">_GLOBAL_OFFSET_TABLE_</span>
 <span class="mi">0000000000000087</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="n">_GLOBAL__sub_I_main</span>
@@ -166,33 +299,89 @@ following code:</p>
 <span class="mi">0000000000000000</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="n">_ZStL19piecewise_construct</span>
 <span class="mi">0000000000000000</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="n">_ZStL8__ioinit</span>
 <span class="w">                 </span><span class="n">U</span><span class="w"> </span><span class="n">_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc</span>
-</code></pre></div>
-<p>Beautiful.</p>
-<p>I have an overly verbose, yet contrived, example on GitHub <a href="https://gist.github.com/ahota/c8288979c6c0054a350f07e53418f298">here</a>. I've
-hidden <code>main</code> within a bird's nest of code.</p>
-<p>So, why would you do this? I actually found this pattern in production code
+</code></pre>
+      </div>
+      <p>
+        Beautiful.
+      </p>
+      <p>
+        I have an overly verbose, yet contrived, example on GitHub
+        <a href="https://gist.github.com/ahota/c8288979c6c0054a350f07e53418f298">
+          here
+        </a>
+        . I've
+hidden
+        <code>main</code>
+        within a bird's nest of code.
+      </p>
+      <p>
+        So, why would you do this? I actually found this pattern in production code
 I was working on. It's such a bizarre thing to do that I felt it must have
-a legitimate purpose<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.</p>
-<p>My first thought was that it could be used as a shortcut to namespace
-specification for types and variables. That is, if <code>main()</code> is within
-<code>namespace foo</code>, and there exists an <code>int foo::bar</code>, then <code>main()</code> can
-refer to it as simply <code>bar</code>. But you could just as easily write <code>main()</code>
-outside of the namespace and use <code>using namespace foo</code> to achieve the same
+a legitimate purpose
+        <sup id="fnref:3">
+          <a class="footnote-ref" href="#fn:3">
+            3
+          </a>
+        </sup>
+        .
+      </p>
+      <p>
+        My first thought was that it could be used as a shortcut to namespace
+specification for types and variables. That is, if
+        <code>main()</code>
+        is within
+        <code>namespace foo</code>
+        , and there exists an
+        <code>int foo::bar</code>
+        , then
+        <code>main()</code>
+        can
+refer to it as simply
+        <code>bar</code>
+        . But you could just as easily write
+        <code>main()</code>
+        outside of the namespace and use
+        <code>using namespace foo</code>
+        to achieve the same
 thing (though I personally dislike clipping namespaces like this). This is
-an awful "shortcut" for clipping the namespace.</p>
-<p>Another idea I had, which is marginally more useful, is that this idiom can
-be roughly equivalent to the Python <code>if __name__ == '__main__'</code>, where
-modules can be run standalone or as a library.</p>
-<p>Individual Python modules can be run with, for example, <code>python
-my_module.py</code>.  Within the interpreter, a built-in, module-scoped variable
-called <code>__name__</code> is set to <code>'__main__'</code> to denote that this is the "entry
+an awful "shortcut" for clipping the namespace.
+      </p>
+      <p>
+        Another idea I had, which is marginally more useful, is that this idiom can
+be roughly equivalent to the Python
+        <code>if __name__ == '__main__'</code>
+        , where
+modules can be run standalone or as a library.
+      </p>
+      <p>
+        Individual Python modules can be run with, for example,
+        <code>python
+my_module.py</code>
+        .  Within the interpreter, a built-in, module-scoped variable
+called
+        <code>__name__</code>
+        is set to
+        <code>'__main__'</code>
+        to denote that this is the "entry
 point" to the running process. If this same module was imported into
-another module via <code>import my_module</code>, then <code>__name__</code> is set to the
-module's actual name. In this case, it would be <code>'my_module'</code>.</p>
-<p>We can somewhat replicate this with a bit of extra scaffolding in C++. If
-we additionally add preprocessor macros around our namespaced <code>main()</code>, we
-can prevent it from being compiled until we specifically want it:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// foo.cpp</span>
+another module via
+        <code>import my_module</code>
+        , then
+        <code>__name__</code>
+        is set to the
+module's actual name. In this case, it would be
+        <code>'my_module'</code>
+        .
+      </p>
+      <p>
+        We can somewhat replicate this with a bit of extra scaffolding in C++. If
+we additionally add preprocessor macros around our namespaced
+        <code>main()</code>
+        , we
+can prevent it from being compiled until we specifically want it:
+      </p>
+      <div class="codehilite">
+        <pre><span></span><code><span class="c1">// foo.cpp</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">foo</span>
@@ -205,11 +394,19 @@ can prevent it from being compiled until we specifically want it:</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="cp">#endif</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>If <code>I_GOT_A_MAIN</code> is already defined, then our namespaced main function
-will not be compiled. We can define our "actual" <code>main()</code> function in
-another file and include the above code.</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// bar.cpp</span>
+</code></pre>
+      </div>
+      <p>
+        If
+        <code>I_GOT_A_MAIN</code>
+        is already defined, then our namespaced main function
+will not be compiled. We can define our "actual"
+        <code>main()</code>
+        function in
+another file and include the above code.
+      </p>
+      <div class="codehilite">
+        <pre><span></span><code><span class="c1">// bar.cpp</span>
 <span class="cp">#define I_GOT_A_MAIN</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;foo.cpp&gt;</span>
 
@@ -218,39 +415,85 @@ another file and include the above code.</p>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"main()"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>This can be compiled with <code>g++ bar.cpp -o test -I.</code> (I like to use angle
-brackets in my <code>#include</code>s, hence the <code>-I</code>), and it would print out
-<code>main()</code>.  If you remove the <code>#define</code>, we will get a symbol collision from
-the linker that <code>main</code> is defined twice. If we compile only <code>foo.cpp</code> with
-<code>g++ foo.cpp -o foo_test</code>, we would get <code>foo::main()</code> printed.</p>
-<p>Our <code>foo::main()</code> could be used as a unit test of some sort for everything
+</code></pre>
+      </div>
+      <p>
+        This can be compiled with
+        <code>g++ bar.cpp -o test -I.</code>
+        (I like to use angle
+brackets in my
+        <code>#include</code>
+        s, hence the
+        <code>-I</code>
+        ), and it would print out
+        <code>main()</code>
+        .  If you remove the
+        <code>#define</code>
+        , we will get a symbol collision from
+the linker that
+        <code>main</code>
+        is defined twice. If we compile only
+        <code>foo.cpp</code>
+        with
+        <code>g++ foo.cpp -o foo_test</code>
+        , we would get
+        <code>foo::main()</code>
+        printed.
+      </p>
+      <p>
+        Our
+        <code>foo::main()</code>
+        could be used as a unit test of some sort for everything
 defined within the namespaces within that file. Shipping a unit test with
 every source file sounds like a reasonable thing to do. We can simply
 compile individual source files as our test platform instead of relying on
-third-party utilities to do so, or totally rolling our own tests.</p>
-<p>I have another overly complicated yet contrived example on GitHub
-<a href="https://github.com/ahota/beauty">here</a>.</p>
-<p>But maybe don't use this idiom in production code. It just feels dirty.</p>
-<hr>
-<div class="footnote">
-<hr/>
-<ol>
-<li id="fn:1">
-<p>C doesn't have this issue at all as it requires all functions to have different prototypes, which directly translate to different symbols. See the OpenGL C API for example. <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
-</li>
-<li id="fn:2">
-<p>This may not always be the case. It just so happens that my compiler does its naming this way. <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">↩</a></p>
-</li>
-<li id="fn:3">
-<p>In hindsight, I no longer think it was purposefully written with a special design in mind. It is just strangely written code. <a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">↩</a></p>
-</li>
-</ol>
-</div>
-</hr></main>
-<footer>
-<hr/>
-    © alok 2023. but it's not a big deal.
-  </footer>
-</body>
+third-party utilities to do so, or totally rolling our own tests.
+      </p>
+      <p>
+        I have another overly complicated yet contrived example on GitHub
+        <a href="https://github.com/ahota/beauty">
+          here
+        </a>
+        .
+      </p>
+      <p>
+        But maybe don't use this idiom in production code. It just feels dirty.
+      </p>
+      <hr>
+        <div class="footnote">
+          <hr>
+          <ol>
+            <li id="fn:1">
+              <p>
+                C doesn't have this issue at all as it requires all functions to have different prototypes, which directly translate to different symbols. See the OpenGL C API for example.&nbsp;
+                <a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">
+                  &larrhk;
+                </a>
+              </p>
+            </li>
+            <li id="fn:2">
+              <p>
+                This may not always be the case. It just so happens that my compiler does its naming this way.&nbsp;
+                <a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">
+                  &larrhk;
+                </a>
+              </p>
+            </li>
+            <li id="fn:3">
+              <p>
+                In hindsight, I no longer think it was purposefully written with a special design in mind. It is just strangely written code.&nbsp;
+                <a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">
+                  &larrhk;
+                </a>
+              </p>
+            </li>
+          </ol>
+        </div>
+      </hr>
+    </main>
+    <footer>
+      <hr>
+      &copy; alok 2023. but it's not a big deal.
+    </footer>
+  </body>
 </html>

@@ -5,11 +5,12 @@ import markdown
 import os
 
 from argparse import ArgumentParser
-from bs4 import BeautifulSoup
 from jinja2 import Environment, FileSystemLoader
 
+from bs4 import BeautifulSoup
 from bs4.builder import HTMLTreeBuilder
 from bs4.builder._htmlparser import HTMLParserTreeBuilder
+from bs4.formatter import HTMLFormatter
 
 # prevent prettify() from adding newlines to <code> tags
 class CodeAwareTreeBuilder(HTMLParserTreeBuilder):
@@ -35,9 +36,10 @@ def make_post(filename):
         return
     soup.main.h2.code.string.insert_before('~$ ')
 
-    formatter = bs4.formatter.HTMLFormatter(indent=2)
+    formatter = HTMLFormatter.REGISTRY['html5']
+    formatter.indent = '  '
     # bs4 breaks angle brackets inside code
-    post = soup.decode() #soup.prettify(formatter=formatter)
+    post = soup.prettify(formatter=formatter)
 
     dirname, ext = os.path.splitext(os.path.basename(filename))
     dirpath = os.path.join('blog', dirname)
