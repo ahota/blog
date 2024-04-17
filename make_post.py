@@ -20,7 +20,7 @@ def make_post(filename):
     with open(filename, 'r') as f:
         md = f.read()
 
-    html = markdown.markdown(md, extensions=['fenced_code', 'codehilite', 'footnotes'])
+    html = markdown.markdown(md, extensions=['fenced_code', 'codehilite', 'footnotes', 'tables'])
 
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template('post.html')

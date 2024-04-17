@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      alok
+    </title>
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="just some stuff i decided to write" name="description">
+    <link href="favicon.png" rel="icon">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link href="/codehilite.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header>
+      <h1 class="page-title">
+        <a href="/">
+          alok
+        </a>
+      </h1>
+      <nav class="table-o-contents">
+        <ul>
+          <li>
+            <a href="/blog">
+              blog
+            </a>
+          </li>
+          <li>
+            <a href="/about">
+              about me
+            </a>
+          </li>
+          <li>
+            <a href="/projects">
+              projects
+            </a>
+          </li>
+          <li>
+            <a href="/about/contact.html">
+              contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <hr>
+    </header>
+    <main>
+      <!-- //// TITLE AND MAIN CONTENT ////////////////////////////////////// -->
+      <!-- <h2><code>~$ page title</code></h2> -->
+      <h2>
+        <code>~$ neat screen cheat sheet</code>
+      </h2>
+      <p>
+        march 8, 2021 11:07:16
+      </p>
+      <p>
+        tl;dr
+      </p>
+      <ul>
+        <li>
+          Start new session:
+          <code>screen</code>
+          (duh)
+        </li>
+        <li>
+          Start new session with a name:
+          <code>screen -S name</code>
+        </li>
+        <li>
+          Reattach session
+          <code>screen -r session_name</code>
+        </li>
+        <li>
+          List running session
+          <code>screen -ls</code>
+        </li>
+      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Action
+            </th>
+            <th>
+              Key binding
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code>&lt;prefix&gt;</code>
+            </td>
+            <td>
+              <code>C-a</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              create vertical split
+            </td>
+            <td>
+              <code>&lt;prefix&gt; |</code>
+              ,
+              <code>&lt;prefix&gt; c</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              create horizontal split
+            </td>
+            <td>
+              <code>&lt;prefix&gt; S</code>
+              ,
+              <code>&lt;prefix&gt; c</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              cycle between splits
+            </td>
+            <td>
+              <code>&lt;prefix&gt; Tab</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              switch to next/previous split
+            </td>
+            <td>
+              <code>&lt;prefix&gt; n</code>
+              /
+              <code>&lt;prefix&gt; p</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              change session name
+            </td>
+            <td>
+              <code>&lt;prefix&gt; :sessionname name</code>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              detach
+            </td>
+            <td>
+              <code>&lt;prefix&gt; d</code>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>
+        notes
+      </h3>
+      <ul>
+        <li>
+          based on
+          <code>screen</code>
+          default key bindings
+        </li>
+        <li>
+          no default key bindings for moving left/right/up/down between splits
+        </li>
+        <li>
+          <code>&lt;prefix&gt; :focus up</code>
+          ,
+          <code>left</code>
+          ,
+          <code>right</code>
+          ,
+          <code>down</code>
+          are the commands to bind
+        </li>
+        <li>
+          It's a good idea to set a session name either on launch or just before
+  disconnecting. Otherwise the names are difficult to discern between
+        </li>
+      </ul>
+      <h3>
+        why screen
+      </h3>
+      <p>
+        ts;rm (too short; read more)
+      </p>
+      <p>
+        I spend a lot of time in the terminal. My main editor is Vim, and I prefer
+using it inside the terminal alongside the command line for building.  To keep
+things clean, I like to multiplex my terminal so that I can just have one large
+window open. The two main ones that you'll find discussed are
+        <code>tmux</code>
+        and
+        <code>screen</code>
+        . I can't remember why, but my multiplexer of choice has always been
+        <code>tmux</code>
+        . I customized my setup and, after using it for years, it has become an
+extension of the terminal for me. Its commands are second nature, just like
+editing in Vim.
+      </p>
+      <p>
+        However, I
+        <em>
+          also
+        </em>
+        spend a lot of time working on remote machines, usually on a
+cluster with a less customized Linux distro and environment. Whereas my need
+for multiplexing locally is for workflow layout and organization, I need
+multiplexing remotely more for leaving in-progress work and jobs running after
+disconnecting SSH. But on these machines, I usually don't have the luxury of
+installing
+        <code>tmux</code>
+        . Thankfully though,
+        <code>screen</code>
+        is usually installed.
+      </p>
+      <p>
+        While
+        <code>screen</code>
+        is very similar in functionality, its default behaviors and
+keyboard shortcuts are just different enough from my
+        <code>tmux</code>
+        muscle memory to
+confuse me each time I use it. And I don't use it quite often enough to develop
+that second set of muscle memory for
+        <code>screen</code>
+        . While I usually bring up
+        <a href="http://www.pixelbeat.org/lkdb/screen.html">
+          this
+cheat sheet
+        </a>
+        every time I use
+        <code>screen</code>
+        , it doesn't quite list the commands in the way I need them. So, long
+story short, here is my cheat sheet.
+      </p>
+    </main>
+    <footer>
+      <hr>
+      &copy; alok 2024. :wq
+    </footer>
+  </body>
+</html>
